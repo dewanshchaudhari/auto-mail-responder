@@ -20,6 +20,7 @@ export const listLabels = async (auth: any) => {
     }
 
 }
+//checking if the thread has 1 messages and extracting details
 const getThreads = async (id: any, auth: any) => {
     try {
         const gmail = google.gmail({ version: 'v1', auth });
@@ -44,6 +45,7 @@ const getThreads = async (id: any, auth: any) => {
     }
 
 }
+//checking all the messages which has 1 thread count
 export const allThreadsWithSingleMessage = async (auth: any) => {
     console.log('checking threads which contains only one message...');
     const threadIds: {
@@ -63,7 +65,6 @@ export const allThreadsWithSingleMessage = async (auth: any) => {
             for (let i = 0; i < res.data.threads?.length; i++) {
                 const isSingleThread = await getThreads(res.data.threads[i]?.id, auth);
                 if (isSingleThread) threadIds.push(isSingleThread);
-                if (threadIds.length === 1) return threadIds;
             }
     } catch (error) {
         console.log(error);

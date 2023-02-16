@@ -2,3 +2,4 @@ node_modules
 credentials.json
 tsconfig.json
 token.json
+build

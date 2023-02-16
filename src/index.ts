@@ -14,6 +14,7 @@ const main = () => {
         } catch (error) {
             console.log(error);
         }
+        //function runs every 45-120 miliseconds
     }, Math.floor(Math.random() * (120000 - 45000 + 1) + 45000));
 }
 

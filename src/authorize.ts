@@ -7,6 +7,7 @@ import process from 'process';
 const TOKEN_PATH = path.join(process.cwd(), 'token.json');
 const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.compose', 'https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.modify', 'https://www.googleapis.com/auth/gmail.labels'];
+//checking for saved Credentials
 const loadSavedCredentialsIfExist = async () => {
     try {
         const content = await fs.readFile(TOKEN_PATH);
@@ -16,6 +17,7 @@ const loadSavedCredentialsIfExist = async () => {
         return null;
     }
 }
+//saving latest credntials in token_path
 const saveCredentials = async (client: JSONClient) => {
     try {
         const content = await fs.readFile(CREDENTIALS_PATH);
@@ -33,6 +35,7 @@ const saveCredentials = async (client: JSONClient) => {
     }
 
 }
+//checking authorization
 export const authorize = async () => {
     try {
         console.log('checking auth...');

@@ -1,5 +1,5 @@
 import { google } from "googleapis";
-
+//sending email using buffer and converting it into base64 string before sending
 const sendMail = async (thread: { id: string; to: string; from: string; replyTo: string; }, auth: any) => {
     try {
         const messages = [
@@ -30,6 +30,7 @@ const sendMail = async (thread: { id: string; to: string; from: string; replyTo:
 
 
 }
+//sending vacation emails to each thread id
 export const sendVacationEmail = async (threads: { id: string; to: string; from: string; replyTo: string; }[], auth: any) => {
     console.log('sending message...');
     for (let i = 0; i < threads.length; i++) {

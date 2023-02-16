@@ -1,5 +1,6 @@
 import { google } from "googleapis"
 const newLabelName = 'TESTV2'
+//checking if the custom label exisit and if not creating it and returnin its id
 export const checkIfNotCreateLabel = async (auth: any) => {
     console.log('checking labels...');
     try {
@@ -26,6 +27,7 @@ export const checkIfNotCreateLabel = async (auth: any) => {
     }
 
 }
+//tagging each email reply thread with custom labels
 const tagEmailLabel = async (thread: { id: string; to: string; from: string; replyTo: string; }, labelId: any, auth: any) => {
     try {
         const gmail = google.gmail({ version: 'v1', auth });
@@ -43,6 +45,7 @@ const tagEmailLabel = async (thread: { id: string; to: string; from: string; rep
     }
 
 }
+//tagging all email reply thread with custom labels
 export const tagAllEmails = async (threads: { id: string; to: string; from: string; replyTo: string; }[], labelId: any, auth: any) => {
     console.log(`tagging Email with ${newLabelName}...`);
     for (let i = 0; i < threads.length; i++) {
